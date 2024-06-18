@@ -1,4 +1,5 @@
 import { createService } from '../services/userService.js'
+import { generateToken } from '../services/authService.js';
 
 export async function create(req, res){
     try{
@@ -22,7 +23,18 @@ export async function create(req, res){
             return res.status(400).send({message: 'o createService não funcionou'})
         }
 
-        return res.status(200).send({message: 'user create succesfully', user})
+        const token = generateToken(user.id)
+
+        return res.status(200).send({
+            message: 'user create succesfully', 
+            token: token,
+            
+            user: {
+                id: user._id,
+                email,
+                userCategory
+            }
+        })
     }catch(err){
         console.log(`houve algum erro no controlelr`, err)
         return res.status(500).send({message: 'ERROR AO TENTAR CRIAR O USUARIO'})
