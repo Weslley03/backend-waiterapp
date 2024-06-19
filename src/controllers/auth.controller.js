@@ -11,8 +11,6 @@ async function login(req, res){
         }
 
         const { valid, user, message } = await loginService(email, password, userCategory);
-        
-        console.log(valid, user, message)
 
         if(!valid){
             return res.status(400).json({ message })
@@ -23,8 +21,8 @@ async function login(req, res){
         res.send({token, message})
 
     }catch(err){
-        console.log(err)
-        return res.status(500).send({ message: 'erro interno do servidor' })
+        console.log('houve algum erro no controller', err)
+        return res.status(400).send({ message: 'erro interno do servidor' })
     }
 }
 
