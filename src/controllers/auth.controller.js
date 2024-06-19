@@ -18,7 +18,7 @@ async function login(req, res){
 
         const token = await generateToken(user.id)
 
-        res.send({token, message})
+        res.send({token, message, user})
 
     }catch(err){
         console.log('houve algum erro no controller', err)
