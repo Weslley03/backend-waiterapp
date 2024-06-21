@@ -8,6 +8,10 @@ const ProdutoSchema = new mongoose.Schema({
     valorProduto: {
         type: Number,
         require: true
+    },
+    produtoCategory: {
+        type: String,
+        require: true
     } 
 })
 

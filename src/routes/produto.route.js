@@ -1,8 +1,9 @@
 import { Router } from 'express'
-import { createProduto } from '../controllers/produto.controller.js';
+import { createProduto, findProdutoByCategory } from '../controllers/produto.controller.js';
 
 const router = Router();
 
 router.post('/cadastrarProduto', createProduto)
+router.get('/ProdutoCategoria', findProdutoByCategory)
 
 export default router;
