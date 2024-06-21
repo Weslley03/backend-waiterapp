@@ -2,6 +2,8 @@ import express from "express";
 import conectDatabase from './src/database/db.js'
 import userRoute from './src/routes/user.route.js'
 import authRoute from './src/routes/auth.route.js'
+import produtoRoute from './src/routes/produto.route.js'
+
 import cors from 'cors'
 
 const app = express();
@@ -12,6 +14,7 @@ conectDatabase();
 
 app.use('/entrar', userRoute)
 app.use('/auth', authRoute)
+app.use('/produto', produtoRoute)
 
 app.listen(3000, () => {
     console.log('runing...')

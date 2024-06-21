@@ -1,4 +1,4 @@
-import Produto from "../models/Produto"
+import Produto from "../models/Produto.js"
 
 export async function createProdutoService(nomeProduto, valorProduto){
     try{

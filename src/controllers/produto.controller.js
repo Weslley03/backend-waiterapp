@@ -1,3 +1,5 @@
+import { createProdutoService } from '../services/produtoService.js'
+
 export async function createProduto(req, res){
     try{
         const { nomeProduto, valorProduto } = req.body;
