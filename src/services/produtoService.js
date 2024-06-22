@@ -2,7 +2,7 @@ import Produto from "../models/Produto.js"
 
 export async function createProdutoService(nomeProduto, valorProduto, produtoCategory){
     try{
-        const produto = await Produto.create({nomeProduto, valorProduto, })
+        const produto = await Produto.create({nomeProduto, valorProduto, produtoCategory })
         return produto;
     }catch(err){
         console.log('houve um erro no service do back', err)

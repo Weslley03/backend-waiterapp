@@ -23,8 +23,6 @@ export async function createProduto(req, res){
 export async function findProdutoByCategory(req, res){
     try{
         const { category } = req.query
-        console.log(category)
-        console.log(typeof(category))
         if(!category){
             return res.status(400).json({message: 'existem dados faltantes'})
         }
