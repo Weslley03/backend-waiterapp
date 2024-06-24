@@ -1,4 +1,4 @@
-import { createProdutoService, findProdutoByCategoryService } from '../services/produtoService.js'
+import { createProdutoService, findByNameService, findProdutoByCategoryService } from '../services/produtoService.js'
 
 export async function createProduto(req, res){
     try{
@@ -33,6 +33,25 @@ export async function findProdutoByCategory(req, res){
         }
 
         return res.json(produtos);
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export async function findByName(req, res){
+    try{
+        const { nome } = req.query;
+        if(!nome){
+            return res.status(400).json({message: 'existem dados faltantes'})
+        }
+
+        const { ok, produto, message } = await findByNameService(nome)
+
+        if(ok == false || produto == false ){
+            return res.status(400).json({ok, message: 'não foi possivel encontrar esse produto'})
+        }
+
+        return res.json({produto})
     }catch(err){
         console.log(err)
     }

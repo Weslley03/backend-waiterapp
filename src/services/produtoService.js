@@ -18,3 +18,16 @@ export async function findProdutoByCategoryService(category){
     }
 }
 
+export async function findByNameService(nome){
+    try{
+        const produto = await Produto.find({nomeProduto: { $regex: new RegExp(nome, 'i')}})
+        if(produto.length === 0){
+            return {ok: false, message: 'não foi posivel encontrar esse produto em baco'}
+        }
+
+        return {ok: true, produto}
+    }catch(err){
+        console.log(err)
+    }
+} 
+
